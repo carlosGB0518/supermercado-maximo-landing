@@ -1,0 +1,45 @@
+/* ============================================
+   VARIABLES DE MARCA — Supermercado Máximo
+   Manual de Marca v1.0
+   ============================================ */
+:root {
+  /* ── Paleta cromática oficial ── */
+  --color-verde:         #2E7D32;
+  --color-verde-oscuro:  #1B5E20;
+  --color-verde-claro:   #66BB6A;
+  --color-verde-suave:   #E8F5E9;
+  --color-amarillo:      #FDD835;
+  --color-amarillo-suave:#FFFDE7;
+  --color-rojo:          #E53935;
+  --color-rojo-suave:    #FFEBEE;
+  --color-crema:         #FFF8E1;
+  --color-oscuro:        #1A1A1A;
+  --color-gris-oscuro:   #3D3D3D;
+  --color-gris:          #F5F5F5;
+  --color-gris-medio:    #E0E0E0;
+  --color-blanco:        #FFFFFF;
+  --color-texto:         #2C2C2C;
+  --color-texto-suave:   #6B6B6B;
+
+  /* ── Gradientes de marca ── */
+  --degradado-marca:     linear-gradient(135deg, #2E7D32 0%, #66BB6A 60%, #FDD835 100%);
+  --degradado-hero:      linear-gradient(160deg, #1B5E20 0%, #2E7D32 45%, #388E3C 100%);
+  --degradado-cta:       linear-gradient(135deg, #FDD835 0%, #FFB300 100%);
+  --degradado-oscuro:    linear-gradient(160deg, #1A1A1A 0%, #2E7D32 100%);
+
+  /* ── Tipografía (Manual de Marca) ── */
+  --fuente-titulo:       'Syne', sans-serif;
+  --fuente-cuerpo:       'DM Sans', sans-serif;
+
+  /* ── Espaciado ── */
+  --seccion-padding:     5rem 0;
+  --seccion-padding-sm:  3rem 0;
+
+  /* ── Efectos ── */
+  --sombra-card:         0 4px 24px rgba(0,0,0,0.08);
+  --sombra-hover:        0 12px 40px rgba(46,125,50,0.18);
+  --sombra-boton:        0 6px 20px rgba(46,125,50,0.35);
+  --radio:               12px;
+  --radio-lg:            20px;
+  --transicion:          all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}

@@ -1,0 +1,185 @@
+/* ============================================
+   PIE DE PÁGINA — Supermercado Máximo
+   ============================================ */
+
+.pie-pagina {
+  background: var(--color-oscuro);
+  color: rgba(255,255,255,0.7);
+  padding: 4rem 0 0;
+}
+
+/* ── Logo en footer ── */
+.pie-logo {
+  text-decoration: none;
+  display: inline-block;
+  margin-bottom: 1.2rem;
+}
+
+.pie-logo-nombre {
+  font-family: var(--fuente-titulo);
+  font-weight: 800;
+  font-size: 1.4rem;
+  color: var(--color-blanco);
+  display: block;
+  line-height: 1;
+}
+
+.pie-logo-nombre span {
+  color: var(--color-amarillo);
+}
+
+.pie-logo-estrellas {
+  font-size: 0.6rem;
+  color: var(--color-amarillo);
+  letter-spacing: 0.2em;
+  display: block;
+  margin-top: 2px;
+}
+
+.pie-descripcion {
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.55);
+  max-width: 280px;
+  margin-bottom: 1.5rem;
+}
+
+/* ── Redes sociales ── */
+.pie-redes {
+  display: flex;
+  gap: 0.6rem;
+  margin-bottom: 2rem;
+}
+
+.pie-red {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: var(--transicion);
+}
+
+.pie-red:hover {
+  background: var(--color-verde);
+  border-color: var(--color-verde);
+  color: var(--color-blanco);
+  transform: translateY(-2px);
+}
+
+/* ── Columnas de enlaces ── */
+.pie-columna-titulo {
+  font-family: var(--fuente-titulo);
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--color-blanco);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 1.2rem;
+}
+
+.pie-lista {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.pie-lista li {
+  margin-bottom: 0.55rem;
+}
+
+.pie-enlace {
+  color: rgba(255,255,255,0.55);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: var(--transicion);
+}
+
+.pie-enlace:hover {
+  color: var(--color-verde-claro);
+}
+
+/* ── Contacto ── */
+.pie-contacto-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  margin-bottom: 0.8rem;
+  font-size: 0.88rem;
+  color: rgba(255,255,255,0.55);
+}
+
+.pie-contacto-item i {
+  color: var(--color-verde-claro);
+  font-size: 0.95rem;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+/* ── Barra inferior ── */
+.pie-barra-inferior {
+  border-top: 1px solid rgba(255,255,255,0.08);
+  margin-top: 3rem;
+  padding: 1.5rem 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.pie-copyright {
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.35);
+}
+
+.pie-copyright span {
+  color: var(--color-verde-claro);
+}
+
+.pie-legal {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.pie-enlace-legal {
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.35);
+  text-decoration: none;
+  transition: var(--transicion);
+}
+
+.pie-enlace-legal:hover {
+  color: rgba(255,255,255,0.7);
+}
+
+/* ── Banda HubSpot ── */
+.pie-hubspot-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.3);
+  padding: 0.3rem 0.8rem;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 50px;
+}
+
+.pie-hubspot-badge i {
+  color: #FF7A59;
+}
+
+@media (max-width: 768px) {
+  .pie-barra-inferior {
+    flex-direction: column;
+    text-align: center;
+  }
+  .pie-legal { justify-content: center; }
+}

@@ -1,0 +1,165 @@
+/* ============================================
+   PREGUNTAS FRECUENTES — Supermercado Máximo
+   ============================================ */
+
+.seccion-faq {
+  background: var(--color-blanco);
+  padding: var(--seccion-padding);
+}
+
+.faq-encabezado {
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+
+.faq-encabezado .subtitulo-faq {
+  color: var(--color-texto-suave);
+  font-size: 1.05rem;
+  max-width: 520px;
+  margin: 0.5rem auto 0;
+}
+
+/* ── Acordeón personalizado ── */
+.acordeon-faq {
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+.faq-item {
+  border: 1.5px solid var(--color-gris-medio);
+  border-radius: var(--radio);
+  margin-bottom: 0.8rem;
+  overflow: hidden;
+  transition: var(--transicion);
+}
+
+.faq-item.activo {
+  border-color: var(--color-verde-claro);
+  box-shadow: 0 4px 20px rgba(46,125,50,0.1);
+}
+
+.faq-pregunta {
+  width: 100%;
+  background: transparent;
+  border: none;
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  cursor: pointer;
+  text-align: left;
+  transition: var(--transicion);
+}
+
+.faq-pregunta:hover {
+  background: var(--color-verde-suave);
+}
+
+.faq-item.activo .faq-pregunta {
+  background: var(--color-verde-suave);
+}
+
+.faq-pregunta-texto {
+  font-family: var(--fuente-titulo);
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--color-texto);
+  line-height: 1.4;
+}
+
+.faq-icono {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--color-gris-medio);
+  color: var(--color-texto-suave);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  transition: var(--transicion);
+}
+
+.faq-item.activo .faq-icono {
+  background: var(--color-verde);
+  color: var(--color-blanco);
+  transform: rotate(45deg);
+}
+
+.faq-respuesta {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1), padding 0.3s ease;
+  padding: 0 1.5rem;
+}
+
+.faq-item.activo .faq-respuesta {
+  max-height: 300px;
+  padding: 0 1.5rem 1.4rem;
+}
+
+.faq-respuesta-texto {
+  font-size: 0.95rem;
+  color: var(--color-texto-suave);
+  line-height: 1.75;
+  border-top: 1px solid var(--color-gris-medio);
+  padding-top: 1rem;
+}
+
+/* ── Bloque de contacto debajo del FAQ ── */
+.faq-contacto {
+  text-align: center;
+  margin-top: 3rem;
+  padding: 2.5rem;
+  background: var(--color-verde-suave);
+  border-radius: var(--radio-lg);
+  max-width: 780px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.faq-contacto-titulo {
+  font-family: var(--fuente-titulo);
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: var(--color-texto);
+  margin-bottom: 0.5rem;
+}
+
+.faq-contacto-subtitulo {
+  color: var(--color-texto-suave);
+  font-size: 0.93rem;
+  margin-bottom: 1.5rem;
+}
+
+.faq-contacto-botones {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.btn-whatsapp {
+  background: #25D366;
+  color: var(--color-blanco);
+  font-family: var(--fuente-titulo);
+  font-weight: 700;
+  padding: 0.7rem 1.5rem;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: var(--transicion);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.93rem;
+}
+
+.btn-whatsapp:hover {
+  background: #128C7E;
+  color: var(--color-blanco);
+  transform: translateY(-1px);
+}

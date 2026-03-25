@@ -1,0 +1,140 @@
+/* ============================================
+   CTA SECUNDARIO — Supermercado Máximo
+   ============================================ */
+
+.cta-secundario {
+  background: var(--color-amarillo);
+  padding: 4.5rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-secundario::before {
+  content: '';
+  position: absolute;
+  top: -60px;
+  left: -60px;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.05);
+  pointer-events: none;
+}
+
+.cta-secundario::after {
+  content: '';
+  position: absolute;
+  bottom: -80px;
+  right: -80px;
+  width: 350px;
+  height: 350px;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.04);
+  pointer-events: none;
+}
+
+.cta-secundario-contenido {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+.cta-secundario-emoji {
+  font-size: 3.5rem;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.cta-secundario-titulo {
+  font-family: var(--fuente-titulo);
+  font-weight: 800;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  color: var(--color-oscuro);
+  margin-bottom: 0.8rem;
+  line-height: 1.15;
+}
+
+.cta-secundario-subtitulo {
+  font-size: 1.05rem;
+  color: rgba(0,0,0,0.65);
+  max-width: 500px;
+  margin: 0 auto 2.5rem;
+}
+
+.cta-secundario-botones {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.btn-oscuro {
+  background: var(--color-oscuro);
+  color: var(--color-blanco);
+  font-family: var(--fuente-titulo);
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 0.85rem 2rem;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: var(--transicion);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+}
+
+.btn-oscuro:hover {
+  background: var(--color-verde-oscuro);
+  color: var(--color-blanco);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+}
+
+.btn-transparente-oscuro {
+  background: transparent;
+  color: var(--color-oscuro);
+  font-family: var(--fuente-titulo);
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0.85rem 2rem;
+  border: 2px solid rgba(0,0,0,0.25);
+  border-radius: 50px;
+  cursor: pointer;
+  transition: var(--transicion);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-transparente-oscuro:hover {
+  background: rgba(0,0,0,0.08);
+  border-color: var(--color-oscuro);
+  color: var(--color-oscuro);
+}
+
+/* ── Garantías en línea ── */
+.cta-garantias {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.garantia-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: rgba(0,0,0,0.6);
+}
+
+.garantia-item i {
+  color: var(--color-verde);
+  font-size: 1rem;
+}

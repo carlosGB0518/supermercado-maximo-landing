@@ -1,0 +1,149 @@
+/* ============================================
+   ENCABEZADO — Supermercado Máximo
+   ============================================ */
+
+.encabezado {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: rgba(27, 94, 32, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  transition: all 0.3s ease;
+}
+
+.encabezado.desplazado {
+  background: rgba(27, 94, 32, 0.98);
+  box-shadow: 0 4px 30px rgba(0,0,0,0.2);
+}
+
+.encabezado-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 0;
+}
+
+/* ── Logo ── */
+.logo-marca {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.logo-marca-superior {
+  font-family: var(--fuente-cuerpo);
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.65);
+  font-weight: 500;
+}
+
+.logo-marca-nombre {
+  font-family: var(--fuente-titulo);
+  font-weight: 800;
+  font-size: 1.45rem;
+  color: var(--color-blanco);
+  letter-spacing: -0.01em;
+}
+
+.logo-marca-nombre span {
+  color: var(--color-amarillo);
+}
+
+.logo-marca-estrellas {
+  font-size: 0.55rem;
+  color: var(--color-amarillo);
+  letter-spacing: 0.2em;
+  margin-top: 1px;
+}
+
+/* ── Navegación ── */
+.nav-lista {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-enlace {
+  font-family: var(--fuente-cuerpo);
+  font-weight: 500;
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.8);
+  text-decoration: none;
+  padding: 0.45rem 0.9rem;
+  border-radius: 50px;
+  transition: var(--transicion);
+}
+
+.nav-enlace:hover {
+  color: var(--color-blanco);
+  background: rgba(255,255,255,0.1);
+}
+
+.nav-cta {
+  background: var(--color-amarillo);
+  color: var(--color-oscuro) !important;
+  font-weight: 700;
+  padding: 0.5rem 1.2rem;
+}
+
+.nav-cta:hover {
+  background: #ffe000 !important;
+  color: var(--color-oscuro) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(253,216,53,0.45);
+}
+
+/* ── Hamburger ── */
+.btn-menu {
+  display: none;
+  background: transparent;
+  border: none;
+  color: var(--color-blanco);
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.4rem;
+}
+
+/* ── Mobile menu ── */
+.nav-movil {
+  display: none;
+  background: var(--color-verde-oscuro);
+  padding: 1rem 1.5rem 1.5rem;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+.nav-movil.abierto {
+  display: block;
+}
+
+.nav-movil .nav-lista {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.25rem;
+}
+
+.nav-movil .nav-enlace {
+  width: 100%;
+  display: block;
+  padding: 0.6rem 1rem;
+}
+
+.nav-movil .nav-cta {
+  text-align: center;
+  margin-top: 0.5rem;
+}
+
+@media (max-width: 991px) {
+  .btn-menu { display: block; }
+  .nav-escritorio { display: none; }
+}

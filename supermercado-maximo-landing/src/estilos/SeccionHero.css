@@ -1,0 +1,246 @@
+/* ============================================
+   HERO — Supermercado Máximo
+   ============================================ */
+
+.hero {
+  min-height: 100vh;
+  background: var(--degradado-hero);
+  position: relative;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding-top: 5rem;
+}
+
+/* Patrón de fondo */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.06) 1px, transparent 0);
+  background-size: 28px 28px;
+  pointer-events: none;
+}
+
+/* Forma decorativa superior derecha */
+.hero::after {
+  content: '';
+  position: absolute;
+  top: -120px;
+  right: -120px;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(253,216,53,0.18) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-contenido {
+  position: relative;
+  z-index: 2;
+  padding: 4rem 0 5rem;
+}
+
+/* ── Badge superior ── */
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(253,216,53,0.15);
+  border: 1px solid rgba(253,216,53,0.35);
+  color: var(--color-amarillo);
+  font-family: var(--fuente-cuerpo);
+  font-weight: 600;
+  font-size: 0.82rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.45rem 1.1rem;
+  border-radius: 50px;
+  margin-bottom: 1.5rem;
+}
+
+/* ── Título principal ── */
+.hero-titulo {
+  font-family: var(--fuente-titulo);
+  font-weight: 800;
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  color: var(--color-blanco);
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+}
+
+.hero-titulo .acento {
+  color: var(--color-amarillo);
+  position: relative;
+}
+
+/* ── Descripción ── */
+.hero-descripcion {
+  font-size: clamp(1rem, 2vw, 1.15rem);
+  color: rgba(255,255,255,0.82);
+  line-height: 1.75;
+  max-width: 520px;
+  margin-bottom: 2.5rem;
+}
+
+/* ── Botones ── */
+.hero-botones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+
+/* ── Stats / prueba social rápida ── */
+.hero-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.hero-stat-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-stat-numero {
+  font-family: var(--fuente-titulo);
+  font-weight: 800;
+  font-size: 1.8rem;
+  color: var(--color-amarillo);
+  line-height: 1;
+}
+
+.hero-stat-etiqueta {
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.65);
+  font-weight: 400;
+  margin-top: 0.2rem;
+}
+
+/* ── Separador stats ── */
+.hero-stat-sep {
+  width: 1px;
+  background: rgba(255,255,255,0.2);
+  align-self: stretch;
+}
+
+/* ── Imagen / visual derecha ── */
+.hero-visual {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-circulo-fondo {
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(102,187,106,0.2) 0%, rgba(46,125,50,0.05) 70%);
+  border: 1px solid rgba(253,216,53,0.15);
+}
+
+.hero-tarjeta-flotante {
+  position: relative;
+  z-index: 3;
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 24px;
+  padding: 2.5rem;
+  text-align: center;
+  color: var(--color-blanco);
+  max-width: 340px;
+  margin: 0 auto;
+}
+
+.hero-emoji-principal {
+  font-size: 5rem;
+  line-height: 1;
+  margin-bottom: 1rem;
+  display: block;
+  filter: drop-shadow(0 8px 24px rgba(0,0,0,0.2));
+}
+
+.hero-tarjeta-titulo {
+  font-family: var(--fuente-titulo);
+  font-weight: 800;
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.hero-tarjeta-subtitulo {
+  font-size: 0.88rem;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 1.5rem;
+}
+
+/* ── Chips de categorías ── */
+.hero-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.hero-chip {
+  background: rgba(253,216,53,0.2);
+  border: 1px solid rgba(253,216,53,0.3);
+  color: var(--color-amarillo);
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.3rem 0.8rem;
+  border-radius: 50px;
+}
+
+/* ── Tarjeta flotante pequeña (badge confianza) ── */
+.hero-badge-flotante {
+  position: absolute;
+  bottom: -10px;
+  left: -20px;
+  background: var(--color-blanco);
+  border-radius: 14px;
+  padding: 0.8rem 1.2rem;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.18);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  z-index: 4;
+  animation: flotar 3s ease-in-out infinite;
+}
+
+.hero-badge-flotante-icono {
+  font-size: 1.6rem;
+}
+
+.hero-badge-flotante-texto {
+  font-family: var(--fuente-titulo);
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--color-oscuro);
+  line-height: 1.2;
+}
+
+.hero-badge-flotante-sub {
+  font-size: 0.68rem;
+  color: var(--color-texto-suave);
+  font-family: var(--fuente-cuerpo);
+  font-weight: 400;
+}
+
+@media (max-width: 991px) {
+  .hero-contenido { text-align: center; }
+  .hero-descripcion { margin: 0 auto 2.5rem; }
+  .hero-botones { justify-content: center; }
+  .hero-stats { justify-content: center; }
+  .hero-visual { margin-top: 3rem; }
+  .hero-badge-flotante { left: 0; }
+}
+
+@media (max-width: 576px) {
+  .hero-titulo { font-size: 2.2rem; }
+  .hero-tarjeta-flotante { padding: 2rem 1.5rem; }
+  .hero-circulo-fondo { width: 300px; height: 300px; }
+}

@@ -1,0 +1,88 @@
+/* ============================================
+   CTA INTERMEDIO — Supermercado Máximo
+   ============================================ */
+
+.cta-intermedio {
+  background: var(--degradado-hero);
+  position: relative;
+  overflow: hidden;
+  padding: 5rem 0;
+}
+
+.cta-intermedio::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.05) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+.cta-intermedio::after {
+  content: '';
+  position: absolute;
+  bottom: -80px;
+  right: -80px;
+  width: 360px;
+  height: 360px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(253,216,53,0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.cta-intermedio-contenido {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+.cta-intermedio-icono {
+  font-size: 4rem;
+  display: block;
+  margin-bottom: 1.2rem;
+  animation: flotar 3s ease-in-out infinite;
+}
+
+.cta-intermedio-titulo {
+  font-family: var(--fuente-titulo);
+  font-weight: 800;
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  color: var(--color-blanco);
+  margin-bottom: 1rem;
+}
+
+.cta-intermedio-titulo span {
+  color: var(--color-amarillo);
+}
+
+.cta-intermedio-subtitulo {
+  color: rgba(255,255,255,0.78);
+  font-size: 1.05rem;
+  max-width: 520px;
+  margin: 0 auto 2.5rem;
+}
+
+.cta-intermedio-botones {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+/* ── Contadores de urgencia ── */
+.cta-urgencia {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(229,57,53,0.15);
+  border: 1px solid rgba(229,57,53,0.3);
+  color: #ff8a80;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.4rem 1rem;
+  border-radius: 50px;
+}
+
+.cta-urgencia i {
+  animation: pulso 1.5s ease-in-out infinite;
+}

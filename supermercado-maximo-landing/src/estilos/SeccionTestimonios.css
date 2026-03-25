@@ -1,0 +1,213 @@
+/* ============================================
+   TESTIMONIOS — Supermercado Máximo
+   ============================================ */
+
+.seccion-testimonios {
+  background: var(--color-verde-oscuro);
+  padding: var(--seccion-padding);
+  position: relative;
+  overflow: hidden;
+}
+
+.seccion-testimonios::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.04) 1px, transparent 0);
+  background-size: 28px 28px;
+}
+
+.seccion-testimonios::after {
+  content: '';
+  position: absolute;
+  top: -150px;
+  right: -150px;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(253,216,53,0.08) 0%, transparent 70%);
+}
+
+/* ── Encabezado ── */
+.testimonios-encabezado {
+  text-align: center;
+  margin-bottom: 4rem;
+  position: relative;
+  z-index: 2;
+}
+
+.testimonios-encabezado .etiqueta-seccion {
+  background: rgba(253,216,53,0.15);
+  color: var(--color-amarillo);
+  border: 1px solid rgba(253,216,53,0.25);
+}
+
+/* ── Puntuación general ── */
+.puntuacion-general {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.puntuacion-numero {
+  font-family: var(--fuente-titulo);
+  font-weight: 800;
+  font-size: 3.5rem;
+  color: var(--color-amarillo);
+  line-height: 1;
+}
+
+.puntuacion-detalles {
+  text-align: left;
+}
+
+.puntuacion-estrellas {
+  color: var(--color-amarillo);
+  font-size: 1.2rem;
+  letter-spacing: 0.1em;
+  display: block;
+}
+
+.puntuacion-reseñas {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.6);
+  margin-top: 0.2rem;
+}
+
+/* ── Tarjeta testimonio ── */
+.tarjeta-testimonio {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--radio-lg);
+  padding: 2rem;
+  height: 100%;
+  transition: var(--transicion);
+  position: relative;
+  backdrop-filter: blur(4px);
+}
+
+.tarjeta-testimonio:hover {
+  background: rgba(255,255,255,0.1);
+  border-color: rgba(253,216,53,0.3);
+  transform: translateY(-4px);
+}
+
+.testimonio-comillas {
+  font-size: 3rem;
+  line-height: 1;
+  color: var(--color-amarillo);
+  opacity: 0.5;
+  font-family: Georgia, serif;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.testimonio-estrellas {
+  color: var(--color-amarillo);
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.testimonio-texto {
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.85);
+  line-height: 1.75;
+  margin-bottom: 1.5rem;
+  font-style: italic;
+}
+
+.testimonio-autor {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.testimonio-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--degradado-marca);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+  border: 2px solid rgba(253,216,53,0.3);
+}
+
+.testimonio-nombre {
+  font-family: var(--fuente-titulo);
+  font-weight: 700;
+  font-size: 0.92rem;
+  color: var(--color-blanco);
+  display: block;
+}
+
+.testimonio-barrio {
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.5);
+}
+
+/* ── Badge verificado ── */
+.testimonio-verificado {
+  position: absolute;
+  top: 1.2rem;
+  right: 1.2rem;
+  background: rgba(46,125,50,0.3);
+  border: 1px solid rgba(102,187,106,0.3);
+  color: var(--color-verde-claro);
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.2rem 0.6rem;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+/* ── Barra de plataformas ── */
+.barra-plataformas {
+  margin-top: 4rem;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.plataformas-titulo {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.45);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 1.5rem;
+}
+
+.plataformas-items {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.plataforma-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: rgba(255,255,255,0.5);
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: var(--transicion);
+}
+
+.plataforma-item i {
+  font-size: 1.2rem;
+}
+
+.plataforma-item:hover {
+  color: var(--color-amarillo);
+}

@@ -1,0 +1,155 @@
+/* ============================================
+   BENEFICIOS — Supermercado Máximo
+   ============================================ */
+
+.beneficios {
+  background: var(--color-blanco);
+  padding: var(--seccion-padding);
+}
+
+.beneficios-encabezado {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.beneficios-encabezado .titulo-seccion {
+  max-width: 600px;
+  margin: 0 auto 1rem;
+}
+
+.beneficios-encabezado .subtitulo {
+  color: var(--color-texto-suave);
+  font-size: 1.05rem;
+  max-width: 540px;
+  margin: 0 auto;
+}
+
+/* ── Tarjeta de beneficio ── */
+.tarjeta-beneficio {
+  background: var(--color-blanco);
+  border: 1.5px solid var(--color-gris-medio);
+  border-radius: var(--radio-lg);
+  padding: 2rem 1.8rem;
+  height: 100%;
+  transition: var(--transicion);
+  position: relative;
+  overflow: hidden;
+}
+
+.tarjeta-beneficio::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--degradado-marca);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+
+.tarjeta-beneficio:hover {
+  border-color: var(--color-verde-claro);
+  box-shadow: var(--sombra-hover);
+  transform: translateY(-6px);
+}
+
+.tarjeta-beneficio:hover::before {
+  transform: scaleX(1);
+}
+
+/* ── Ícono del beneficio ── */
+.beneficio-icono-contenedor {
+  width: 60px;
+  height: 60px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.4rem;
+  font-size: 1.7rem;
+  transition: var(--transicion);
+}
+
+.tarjeta-beneficio:hover .beneficio-icono-contenedor {
+  transform: scale(1.1) rotate(-5deg);
+}
+
+.icono-verde   { background: var(--color-verde-suave); }
+.icono-amarillo { background: var(--color-amarillo-suave); }
+.icono-rojo    { background: var(--color-rojo-suave); }
+.icono-crema   { background: var(--color-crema); }
+
+.beneficio-titulo {
+  font-family: var(--fuente-titulo);
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--color-texto);
+  margin-bottom: 0.6rem;
+}
+
+.beneficio-descripcion {
+  font-size: 0.93rem;
+  color: var(--color-texto-suave);
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+
+.beneficio-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--color-verde);
+  background: var(--color-verde-suave);
+  padding: 0.25rem 0.7rem;
+  border-radius: 50px;
+}
+
+/* ── Fila de logos confianza ── */
+.barra-confianza {
+  background: var(--color-gris);
+  border-radius: var(--radio);
+  padding: 1.8rem 2rem;
+  margin-top: 4rem;
+  text-align: center;
+}
+
+.barra-confianza-titulo {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--color-texto-suave);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 1.2rem;
+}
+
+.barra-confianza-items {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+.confianza-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--color-gris-oscuro);
+  opacity: 0.6;
+  transition: var(--transicion);
+}
+
+.confianza-item:hover {
+  opacity: 1;
+  color: var(--color-verde);
+}
+
+.confianza-item i {
+  font-size: 1.2rem;
+}

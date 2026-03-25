@@ -1,0 +1,261 @@
+/* ============================================
+   ESTILOS GLOBALES — Supermercado Máximo
+   ============================================ */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--fuente-cuerpo);
+  color: var(--color-texto);
+  background: var(--color-blanco);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--fuente-titulo);
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+p {
+  font-family: var(--fuente-cuerpo);
+  font-weight: 400;
+  line-height: 1.7;
+}
+
+/* ── Scrollbar personalizada ── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--color-gris); }
+::-webkit-scrollbar-thumb { background: var(--color-verde); border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-verde-oscuro); }
+
+/* ── Animaciones ── */
+@keyframes subirFadeIn {
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes entrarIzquierda {
+  from { opacity: 0; transform: translateX(-40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes entrarDerecha {
+  from { opacity: 0; transform: translateX(40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes pulso {
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.05); }
+}
+
+@keyframes flotar {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-12px); }
+}
+
+@keyframes rotarLento {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes brillar {
+  0%   { box-shadow: 0 0 0 0 rgba(253, 216, 53, 0.4); }
+  70%  { box-shadow: 0 0 0 15px rgba(253, 216, 53, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(253, 216, 53, 0); }
+}
+
+/* ── Clases utilitarias de animación ── */
+.animar-subir   { animation: subirFadeIn 0.7s ease both; }
+.animar-izq     { animation: entrarIzquierda 0.7s ease both; }
+.animar-der     { animation: entrarDerecha 0.7s ease both; }
+.flotar         { animation: flotar 3s ease-in-out infinite; }
+
+/* ── Delays escalonados ── */
+.delay-1 { animation-delay: 0.1s; }
+.delay-2 { animation-delay: 0.2s; }
+.delay-3 { animation-delay: 0.3s; }
+.delay-4 { animation-delay: 0.4s; }
+.delay-5 { animation-delay: 0.5s; }
+
+/* ── Sección base ── */
+.seccion {
+  padding: var(--seccion-padding);
+}
+
+.seccion-sm {
+  padding: var(--seccion-padding-sm);
+}
+
+/* ── Tarjeta reutilizable ── */
+.tarjeta-base {
+  background: var(--color-blanco);
+  border-radius: var(--radio);
+  box-shadow: var(--sombra-card);
+  transition: var(--transicion);
+}
+
+.tarjeta-base:hover {
+  box-shadow: var(--sombra-hover);
+  transform: translateY(-4px);
+}
+
+/* ── Botones de marca ── */
+.btn-marca-primario {
+  background: var(--color-amarillo);
+  color: var(--color-oscuro);
+  font-family: var(--fuente-titulo);
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 0.85rem 2rem;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: var(--transicion);
+  box-shadow: var(--sombra-boton);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-marca-primario:hover {
+  background: var(--color-amarillo);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(253,216,53,0.45);
+  color: var(--color-oscuro);
+  animation: brillar 1s infinite;
+}
+
+.btn-marca-secundario {
+  background: transparent;
+  color: var(--color-blanco);
+  font-family: var(--fuente-titulo);
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0.85rem 2rem;
+  border: 2px solid rgba(255,255,255,0.5);
+  border-radius: 50px;
+  cursor: pointer;
+  transition: var(--transicion);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-marca-secundario:hover {
+  background: rgba(255,255,255,0.1);
+  border-color: var(--color-blanco);
+  color: var(--color-blanco);
+}
+
+.btn-verde {
+  background: var(--color-verde);
+  color: var(--color-blanco);
+  font-family: var(--fuente-titulo);
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 0.85rem 2rem;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: var(--transicion);
+  box-shadow: var(--sombra-boton);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-verde:hover {
+  background: var(--color-verde-oscuro);
+  transform: translateY(-2px);
+  color: var(--color-blanco);
+}
+
+/* ── Etiqueta de sección ── */
+.etiqueta-seccion {
+  display: inline-block;
+  background: var(--color-verde-suave);
+  color: var(--color-verde);
+  font-family: var(--fuente-cuerpo);
+  font-weight: 600;
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.35rem 1rem;
+  border-radius: 50px;
+  margin-bottom: 1rem;
+}
+
+.etiqueta-seccion-amarilla {
+  background: var(--color-amarillo-suave);
+  color: #7c6200;
+}
+
+/* ── Título de sección ── */
+.titulo-seccion {
+  font-family: var(--fuente-titulo);
+  font-weight: 800;
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  color: var(--color-texto);
+  margin-bottom: 1rem;
+}
+
+.titulo-seccion-blanco {
+  color: var(--color-blanco);
+}
+
+.titulo-resaltado {
+  position: relative;
+  display: inline;
+}
+
+.titulo-resaltado::after {
+  content: '';
+  position: absolute;
+  bottom: 4px;
+  left: 0;
+  width: 100%;
+  height: 8px;
+  background: var(--color-amarillo);
+  z-index: -1;
+  border-radius: 4px;
+  opacity: 0.6;
+}
+
+/* ── Línea decorativa ── */
+.linea-deco {
+  width: 60px;
+  height: 4px;
+  background: var(--degradado-cta);
+  border-radius: 2px;
+  margin: 1.2rem 0;
+}
+
+/* ── Overlay pattern ── */
+.patron-fondo {
+  background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.08) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+/* ── Responsive utilities ── */
+@media (max-width: 768px) {
+  .seccion {
+    padding: 3.5rem 0;
+  }
+  .titulo-seccion {
+    font-size: 1.8rem;
+  }
+}

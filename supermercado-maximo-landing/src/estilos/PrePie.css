@@ -1,0 +1,110 @@
+/* ============================================
+   PRE-PIE — Supermercado Máximo
+   ============================================ */
+
+.pre-pie {
+  background: var(--color-verde);
+  padding: 5rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.pre-pie::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.05) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+.pre-pie::after {
+  content: '';
+  position: absolute;
+  bottom: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(253,216,53,0.1) 0%, transparent 70%);
+}
+
+.pre-pie-contenido {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+.pre-pie-titulo {
+  font-family: var(--fuente-titulo);
+  font-weight: 800;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  color: var(--color-blanco);
+  margin-bottom: 1rem;
+  line-height: 1.1;
+}
+
+.pre-pie-titulo span {
+  color: var(--color-amarillo);
+}
+
+.pre-pie-subtitulo {
+  color: rgba(255,255,255,0.78);
+  font-size: 1.1rem;
+  max-width: 540px;
+  margin: 0 auto 2.5rem;
+}
+
+.pre-pie-botones {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+
+/* ── Micro-stats finales ── */
+.pre-pie-stats {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0;
+}
+
+.pre-pie-stat {
+  padding: 0 2.5rem;
+  text-align: center;
+  position: relative;
+}
+
+.pre-pie-stat:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 40px;
+  width: 1px;
+  background: rgba(255,255,255,0.2);
+}
+
+.pre-pie-stat-numero {
+  font-family: var(--fuente-titulo);
+  font-weight: 800;
+  font-size: 1.8rem;
+  color: var(--color-amarillo);
+  display: block;
+  line-height: 1;
+}
+
+.pre-pie-stat-etiqueta {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.6);
+  display: block;
+  margin-top: 0.3rem;
+}
+
+@media (max-width: 576px) {
+  .pre-pie-stat { padding: 0.8rem 1.5rem; }
+  .pre-pie-stat:not(:last-child)::after { display: none; }
+}
