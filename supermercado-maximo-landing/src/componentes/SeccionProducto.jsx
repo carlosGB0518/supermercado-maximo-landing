@@ -2,9 +2,9 @@ import { useState, useEffect } from 'react'
 import '../estilos/SeccionProducto.css'
 
 // ── Configuración HubSpot ──────────────────────────────────────────────
-// Reemplaza estos valores con los de tu cuenta de HubSpot
-const HUBSPOT_PORTAL_ID  = 'TU_PORTAL_ID'    // Ej: '12345678'
-const HUBSPOT_FORM_ID    = 'TU_FORM_ID'      // Ej: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
+
+const HUBSPOT_PORTAL_ID  = '51259749'    // Ej: '12345678'
+const HUBSPOT_FORM_ID    = 'ad43dbf7-fcba-4ea8-82a8-7a97d60677f4'      // Ej: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 
 const pasos = [
   {
