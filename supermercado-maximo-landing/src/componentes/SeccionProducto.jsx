@@ -60,7 +60,7 @@ function FormularioNativo({ alEnviar }) {
         { objectTypeId: '0-1', name: 'nombre_completo',   value: campos.nombres },
         { objectTypeId: '0-1', name: 'email',        value: campos.correo },
         { objectTypeId: '0-1', name: 'phone',        value: campos.telefono },
-        { objectTypeId: '0-1', name: 'city',         value: campos.barrio },
+        { objectTypeId: '0-1', name: 'localidad',         value: campos.barrio },
       ],
       context: {
         pageUri:  window.location.href,
@@ -167,7 +167,6 @@ function FormularioNativo({ alEnviar }) {
           <option value="engativa">Engativá</option>
           <option value="usme">Usme</option>
           <option value="fontibon">Fontibón</option>
-          <option value="otro">Otro barrio</option>
         </select>
       </div>
 
