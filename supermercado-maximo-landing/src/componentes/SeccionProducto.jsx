@@ -57,7 +57,7 @@ function FormularioNativo({ alEnviar }) {
     // ── Envío a HubSpot API v3 ──────────────────────────────────────────
     const cuerpo = {
       fields: [
-        { objectTypeId: '0-1', name: 'firstname',   value: campos.nombres },
+        { objectTypeId: '0-1', name: 'nombre_completo',   value: campos.nombres },
         { objectTypeId: '0-1', name: 'email',        value: campos.correo },
         { objectTypeId: '0-1', name: 'phone',        value: campos.telefono },
         { objectTypeId: '0-1', name: 'city',         value: campos.barrio },
