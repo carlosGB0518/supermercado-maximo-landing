@@ -3,8 +3,8 @@ import '../estilos/SeccionProducto.css'
 
 // ── Configuración HubSpot ──────────────────────────────────────────────
 
-const HUBSPOT_PORTAL_ID  = '51259749'    // Ej: '12345678'
-const HUBSPOT_FORM_ID    = 'ad43dbf7-fcba-4ea8-82a8-7a97d60677f4'      // Ej: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
+const HUBSPOT_PORTAL_ID = import.meta.env.VITE_HUBSPOT_PORTAL_ID
+const HUBSPOT_FORM_ID   = import.meta.env.VITE_HUBSPOT_
 
 const pasos = [
   {
