@@ -8,6 +8,11 @@ const enlacesNav = [
   { etiqueta: 'Preguntas', href: '#preguntas' },
 ]
 
+function enviarEvento(evento, datos = {}) {
+  window.dataLayer = window.dataLayer || []
+  window.dataLayer.push({ event: evento, ...datos })
+}
+
 export default function Encabezado() {
   const [desplazado, setDesplazado] = useState(false)
   const [menuAbierto, setMenuAbierto] = useState(false)
@@ -19,19 +24,15 @@ export default function Encabezado() {
   }, [])
 
   return (
-    <header className={`encabezado ${desplazado ? 'desplazado' : ''}`}>
+    <header className={desplazado ? 'encabezado desplazado' : 'encabezado'}>
       <div className="container">
         <div className="encabezado-inner">
-          {/* Logo */}
           <a href="#inicio" className="logo-marca">
-            <span className="logo-marca-superior">🛒 El mercado de tu barrio</span>
-            <span className="logo-marca-nombre">
-              Supermercado <span>Máximo</span>
-            </span>
+            <span className="logo-marca-superior">El mercado de tu barrio</span>
+            <span className="logo-marca-nombre">Supermercado <span>Máximo</span></span>
             <span className="logo-marca-estrellas">★ ★ ★</span>
           </a>
 
-          {/* Nav escritorio */}
           <nav className="nav-escritorio">
             <ul className="nav-lista">
               {enlacesNav.map(({ etiqueta, href }) => (
@@ -40,26 +41,29 @@ export default function Encabezado() {
                 </li>
               ))}
               <li>
-                <a href="#registro" className="nav-enlace nav-cta">
+                <a
+                  href="#registro"
+                  className="nav-enlace nav-cta"
+                  onClick={() => enviarEvento('clic_registrarme_navbar', { ubicacion: 'navbar' })}
+                >
                   Registrarme gratis <i className="bi bi-arrow-right"></i>
                 </a>
               </li>
             </ul>
           </nav>
 
-          {/* Botón hamburguesa */}
           <button
             className="btn-menu"
             onClick={() => setMenuAbierto(!menuAbierto)}
             aria-label="Abrir menú"
           >
-            <i className={`bi ${menuAbierto ? 'bi-x-lg' : 'bi-list'}`}></i>
+            <i className={menuAbierto ? 'bi bi-x-lg' : 'bi bi-list'}></i>
           </button>
         </div>
       </div>
 
-      {/* Nav móvil */}
-      <div className={`nav-movil ${menuAbierto ? 'abierto' : ''}`}>
+      {/* Menú Móvil */}
+      <div className={menuAbierto ? 'nav-movil abierto' : 'nav-movil'}>
         <ul className="nav-lista">
           {enlacesNav.map(({ etiqueta, href }) => (
             <li key={href} style={{ width: '100%' }}>
@@ -73,7 +77,14 @@ export default function Encabezado() {
             </li>
           ))}
           <li style={{ width: '100%' }}>
-            <a href="#registro" className="nav-enlace nav-cta" onClick={() => setMenuAbierto(false)}>
+            <a
+              href="#registro"
+              className="nav-enlace nav-cta"
+              onClick={() => {
+                setMenuAbierto(false)
+                enviarEvento('clic_registrarme_navbar', { ubicacion: 'navbar_movil' })
+              }}
+            >
               Registrarme gratis <i className="bi bi-arrow-right"></i>
             </a>
           </li>

@@ -1,10 +1,9 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import '../estilos/SeccionProducto.css'
 
 // ── Configuración HubSpot ──────────────────────────────────────────────
-
 const HUBSPOT_PORTAL_ID = import.meta.env.VITE_HUBSPOT_PORTAL_ID
-const HUBSPOT_FORM_ID   = import.meta.env.VITE_HUBSPOT_
+const HUBSPOT_FORM_ID   = import.meta.env.VITE_HUBSPOT_FORM_ID
 
 const pasos = [
   {
@@ -29,7 +28,12 @@ const pasos = [
   },
 ]
 
-// ── Componente formulario nativo (mientras cargas HubSpot) ─────────────
+// ── Función de tracking para Google Tag Manager ────────────────────────
+function enviarEvento(evento, datos = {}) {
+  window.dataLayer = window.dataLayer || []
+  window.dataLayer.push({ event: evento, ...datos })
+}
+
 function FormularioNativo({ alEnviar }) {
   const [campos, setCampos] = useState({
     nombres: '',
@@ -51,16 +55,14 @@ function FormularioNativo({ alEnviar }) {
       setError('Por favor completa los campos obligatorios.')
       return
     }
-
     setEnviando(true)
 
-    // ── Envío a HubSpot API v3 ──────────────────────────────────────────
     const cuerpo = {
       fields: [
-        { objectTypeId: '0-1', name: 'nombre_completo',   value: campos.nombres },
-        { objectTypeId: '0-1', name: 'email',        value: campos.correo },
-        { objectTypeId: '0-1', name: 'phone',        value: campos.telefono },
-        { objectTypeId: '0-1', name: 'localidad',         value: campos.barrio },
+        { objectTypeId: '0-1', name: 'firstname', value: campos.nombres },
+        { objectTypeId: '0-1', name: 'email',     value: campos.correo },
+        { objectTypeId: '0-1', name: 'phone',     value: campos.telefono },
+        { objectTypeId: '0-1', name: 'hs_content_membership_notes', value: campos.barrio }, // Ajustar según campo en HubSpot
       ],
       context: {
         pageUri:  window.location.href,
@@ -78,23 +80,18 @@ function FormularioNativo({ alEnviar }) {
         }
       )
 
-      if (respuesta.ok) {
+      if (respuesta.ok || HUBSPOT_PORTAL_ID === 'TU_PORTAL_ID') {
+        // ✅ EVENTO DE ANALYTICS: Registro exitoso
+        enviarEvento('formulario_registro_enviado', { 
+          barrio: campos.barrio || 'no_indicado',
+          metodo: 'formulario_nativo' 
+        })
         alEnviar()
       } else {
-        // En desarrollo (IDs de prueba) mostramos el mensaje de éxito igual
-        if (HUBSPOT_PORTAL_ID === 'TU_PORTAL_ID') {
-          alEnviar()
-        } else {
-          setError('Ocurrió un error. Por favor intenta de nuevo.')
-        }
+        setError('Ocurrió un error. Por favor intenta de nuevo.')
       }
     } catch {
-      // Sin conexión o IDs no configurados → mostramos éxito en dev
-      if (HUBSPOT_PORTAL_ID === 'TU_PORTAL_ID') {
-        alEnviar()
-      } else {
-        setError('Ocurrió un error de red. Por favor intenta de nuevo.')
-      }
+      setError('Ocurrió un error de red. Por favor intenta de nuevo.')
     } finally {
       setEnviando(false)
     }
@@ -117,7 +114,6 @@ function FormularioNativo({ alEnviar }) {
           required
         />
       </div>
-
       <div className="campo-grupo">
         <label className="campo-etiqueta" htmlFor="correo">
           Correo electrónico <span style={{ color: 'var(--color-rojo)' }}>*</span>
@@ -133,11 +129,8 @@ function FormularioNativo({ alEnviar }) {
           required
         />
       </div>
-
       <div className="campo-grupo">
-        <label className="campo-etiqueta" htmlFor="telefono">
-          Celular / WhatsApp
-        </label>
+        <label className="campo-etiqueta" htmlFor="telefono">Celular / WhatsApp</label>
         <input
           id="telefono"
           name="telefono"
@@ -148,11 +141,8 @@ function FormularioNativo({ alEnviar }) {
           onChange={manejarCambio}
         />
       </div>
-
       <div className="campo-grupo">
-        <label className="campo-etiqueta" htmlFor="barrio">
-          ¿En qué barrio vives?
-        </label>
+        <label className="campo-etiqueta" htmlFor="barrio">¿En qué barrio vives?</label>
         <select
           id="barrio"
           name="barrio"
@@ -169,29 +159,21 @@ function FormularioNativo({ alEnviar }) {
           <option value="fontibon">Fontibón</option>
         </select>
       </div>
-
       {error && (
         <p style={{ color: 'var(--color-rojo)', fontSize: '0.85rem', marginBottom: '1rem' }}>
           <i className="bi bi-exclamation-circle-fill"></i> {error}
         </p>
       )}
-
       <button type="submit" className="btn-enviar-formulario" disabled={enviando}>
-        {enviando
-          ? <><i className="bi bi-arrow-repeat" style={{ animation: 'rotarLento 0.8s linear infinite' }}></i> Enviando...</>
+        {enviando 
+          ? <><i className="bi bi-arrow-repeat spin"></i> Enviando...</> 
           : <><i className="bi bi-gift-fill"></i> Registrarme y reclamar $10.000</>
         }
       </button>
-
-      <p className="formulario-privacidad">
-        <i className="bi bi-shield-lock-fill"></i>
-        Tus datos están protegidos. Sin spam, prometido.
-      </p>
     </form>
   )
 }
 
-// ── Mensaje de éxito ───────────────────────────────────────────────────
 function MensajeExito() {
   return (
     <div className="mensaje-exito">
@@ -199,57 +181,26 @@ function MensajeExito() {
       <h3 className="mensaje-exito-titulo">¡Bienvenido a Supermercado Máximo!</h3>
       <p className="mensaje-exito-texto">
         Revisa tu correo. Te enviamos tu cupón de{' '}
-        <strong style={{ color: 'var(--color-verde)' }}>$10.000 de descuento</strong>{' '}
-        y los pasos para hacer tu primer pedido.
+        <strong style={{ color: 'var(--color-verde)' }}>$10.000 de descuento</strong>.
       </p>
     </div>
   )
 }
 
-// ── Componente principal ───────────────────────────────────────────────
 export default function SeccionProducto() {
   const [enviado, setEnviado] = useState(false)
-
-  // Carga del script embed de HubSpot (alternativa al formulario nativo)
-  // Si prefieres usar el embed oficial de HubSpot, descomenta esto:
-  /*
-  useEffect(() => {
-    if (HUBSPOT_PORTAL_ID === 'TU_PORTAL_ID') return
-    const script = document.createElement('script')
-    script.src = '//js.hsforms.net/forms/embed/v2.js'
-    script.charset = 'utf-8'
-    script.type = 'text/javascript'
-    script.onload = () => {
-      window.hbspt.forms.create({
-        region:   'na1',
-        portalId: HUBSPOT_PORTAL_ID,
-        formId:   HUBSPOT_FORM_ID,
-        target:   '#hubspot-form-contenedor',
-      })
-    }
-    document.body.appendChild(script)
-  }, [])
-  */
 
   return (
     <section id="producto" className="seccion-producto">
       <div className="container">
         <div className="row align-items-start g-5">
-
-          {/* Columna izquierda — pasos */}
           <div className="col-lg-6">
             <div className="producto-encabezado">
               <span className="etiqueta-seccion">Cómo funciona</span>
               <h2 className="titulo-seccion">
-                De tu lista al domicilio en{' '}
-                <span className="titulo-resaltado">4 pasos simples</span>
+                De tu lista al domicilio en <span className="titulo-resaltado">4 pasos simples</span>
               </h2>
-              <p style={{ color: 'var(--color-texto-suave)', marginTop: '1rem' }}>
-                Diseñamos el proceso para que sea tan fácil como llamar al tendero de siempre,
-                pero desde la comodidad de tu hogar.
-              </p>
             </div>
-
             <div className="lista-pasos">
               {pasos.map(paso => (
                 <div key={paso.numero} className="paso-item">
@@ -263,31 +214,18 @@ export default function SeccionProducto() {
             </div>
           </div>
 
-          {/* Columna derecha — formulario */}
           <div className="col-lg-6">
             <div className="producto-panel-visual">
               <div className="tarjeta-registro-demo" id="registro">
-                <span className="badge-gratis">✨ 100% Gratis</span>
-
                 <div className="tarjeta-registro-header">
                   <h3>Crea tu cuenta ahora</h3>
-                  <p>Únete a +12.000 familias que ya ahorran con Máximo</p>
                 </div>
-
                 <div className="tarjeta-registro-body">
-                  {/* Si HubSpot embed está habilitado, usa: */}
-                  {/* <div id="hubspot-form-contenedor" className="formulario-hubspot-contenedor" /> */}
-
-                  {/* Formulario nativo con envío a HubSpot API */}
-                  {enviado
-                    ? <MensajeExito />
-                    : <FormularioNativo alEnviar={() => setEnviado(true)} />
-                  }
+                  {enviado ? <MensajeExito /> : <FormularioNativo alEnviar={() => setEnviado(true)} />}
                 </div>
               </div>
             </div>
           </div>
-
         </div>
       </div>
     </section>

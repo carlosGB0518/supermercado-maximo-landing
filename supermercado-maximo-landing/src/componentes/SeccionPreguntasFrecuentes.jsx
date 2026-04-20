@@ -36,23 +36,33 @@ const preguntas = [
   },
 ]
 
+function enviarEvento(evento, datos = {}) {
+  window.dataLayer = window.dataLayer || []
+  window.dataLayer.push({ event: evento, ...datos })
+}
+
 export default function SeccionPreguntasFrecuentes() {
   const [preguntaActiva, setPreguntaActiva] = useState(null)
 
   const alternarPregunta = (indice) => {
+    const abriendo = preguntaActiva !== indice
+    if (abriendo) {
+      // ✅ Tracking: Enviamos la pregunta exacta para saber qué le preocupa al cliente
+      enviarEvento('clic_pregunta_faq', { 
+        pregunta: preguntas[indice].pregunta,
+        estado: 'abierto'
+      })
+    }
     setPreguntaActiva(prev => prev === indice ? null : indice)
   }
 
   return (
     <section id="preguntas" className="seccion-faq">
       <div className="container">
-
-        {/* Encabezado */}
         <div className="faq-encabezado">
           <span className="etiqueta-seccion">Preguntas frecuentes</span>
           <h2 className="titulo-seccion">
-            Resolvemos todas tus{' '}
-            <span className="titulo-resaltado">dudas</span>
+            Resolvemos todas tus <span className="titulo-resaltado">dudas</span>
           </h2>
           <p className="subtitulo-faq">
             Si no encuentras respuesta aquí, escríbenos por WhatsApp y te respondemos
@@ -60,7 +70,6 @@ export default function SeccionPreguntasFrecuentes() {
           </p>
         </div>
 
-        {/* Acordeón */}
         <div className="acordeon-faq">
           {preguntas.map((item, indice) => (
             <div
@@ -77,7 +86,6 @@ export default function SeccionPreguntasFrecuentes() {
                   <i className="bi bi-plus-lg"></i>
                 </span>
               </button>
-
               <div className="faq-respuesta" role="region">
                 <p className="faq-respuesta-texto">{item.respuesta}</p>
               </div>
@@ -85,29 +93,33 @@ export default function SeccionPreguntasFrecuentes() {
           ))}
         </div>
 
-        {/* Bloque contacto */}
         <div className="faq-contacto">
           <h3 className="faq-contacto-titulo">¿Todavía tienes dudas?</h3>
           <p className="faq-contacto-subtitulo">
-            Nuestro equipo responde en menos de 10 minutos por WhatsApp, todos los días de 7am a 9pm.
+            Nuestro equipo responde en menos de 10 minutos por WhatsApp.
           </p>
           <div className="faq-contacto-botones">
-            <a
+            {/* CORREGIDO: Se restauró la etiqueta <a> */}
+            <a 
               href="https://wa.me/573000000000?text=Hola%2C%20quiero%20saber%20m%C3%A1s%20sobre%20Supermercado%20M%C3%A1ximo"
               target="_blank"
               rel="noopener noreferrer"
               className="btn-whatsapp"
+              onClick={() => enviarEvento('clic_whatsapp_faq', { ubicacion: 'faq_footer' })}
             >
               <i className="bi bi-whatsapp"></i>
               Escribir por WhatsApp
             </a>
-            <a href="mailto:hola@supermercadomaximo.co" className="btn-verde">
+            <a 
+              href="mailto:hola@supermercadomaximo.co" 
+              className="btn-verde"
+              onClick={() => enviarEvento('clic_correo_faq', { ubicacion: 'faq_footer' })}
+            >
               <i className="bi bi-envelope-fill"></i>
               Enviar correo
             </a>
           </div>
         </div>
-
       </div>
     </section>
   )
