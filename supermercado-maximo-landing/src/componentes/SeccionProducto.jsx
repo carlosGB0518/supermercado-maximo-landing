@@ -62,7 +62,7 @@ function FormularioNativo({ alEnviar }) {
         { objectTypeId: '0-1', name: 'nombre_completo', value: campos.nombres },
         { objectTypeId: '0-1', name: 'email',     value: campos.correo },
         { objectTypeId: '0-1', name: 'phone',     value: campos.telefono },
-        { objectTypeId: '0-1', name: 'address', value: campos.direccion }, // Ajustar según campo en HubSpot
+        { objectTypeId: '0-1', name: 'address', value: campos.direccion },
       ],
       context: {
         pageUri:  window.location.href,
@@ -83,7 +83,7 @@ function FormularioNativo({ alEnviar }) {
       if (respuesta.ok || HUBSPOT_PORTAL_ID === 'TU_PORTAL_ID') {
         // ✅ EVENTO DE ANALYTICS: Registro exitoso
         enviarEvento('formulario_registro_enviado', { 
-          barrio: campos.barrio || 'no_indicado',
+          direccion: campos.direccion || 'no_indicado',
           metodo: 'formulario_nativo' 
         })
         alEnviar()
