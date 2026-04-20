@@ -62,7 +62,7 @@ function FormularioNativo({ alEnviar }) {
         { objectTypeId: '0-1', name: 'firstname', value: campos.nombres },
         { objectTypeId: '0-1', name: 'email',     value: campos.correo },
         { objectTypeId: '0-1', name: 'phone',     value: campos.telefono },
-        { objectTypeId: '0-1', name: 'hs_content_membership_notes', value: campos.barrio }, // Ajustar según campo en HubSpot
+        { objectTypeId: '0-1', name: 'localidad', value: campos.barrio }, // Ajustar según campo en HubSpot
       ],
       context: {
         pageUri:  window.location.href,
@@ -151,12 +151,12 @@ function FormularioNativo({ alEnviar }) {
           onChange={manejarCambio}
         >
           <option value="">Selecciona tu barrio</option>
-          <option value="kennedy">Kennedy</option>
-          <option value="bosa">Bosa</option>
-          <option value="suba">Suba</option>
-          <option value="engativa">Engativá</option>
-          <option value="usme">Usme</option>
-          <option value="fontibon">Fontibón</option>
+          <option value="Kennedy">Kennedy</option>
+          <option value="Bosa">Bosa</option>
+          <option value="Suba">Suba</option>
+          <option value="Engativá">Engativá</option>
+          <option value="Usme">Usme</option>
+          <option value="Fontibón">Fontibón</option>
         </select>
       </div>
       {error && (
