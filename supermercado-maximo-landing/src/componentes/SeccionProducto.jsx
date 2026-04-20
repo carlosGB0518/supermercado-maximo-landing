@@ -36,11 +36,11 @@ function enviarEvento(evento, datos = {}) {
 
 function FormularioNativo({ alEnviar }) {
   const [campos, setCampos] = useState({
-    nombres: '',
-    correo: '',
-    telefono: '',
-    barrio: '',
-  })
+  nombres: '',
+  correo: '',
+  telefono: '',
+  direccion: '',
+})
   const [enviando, setEnviando] = useState(false)
   const [error, setError] = useState('')
 
@@ -62,7 +62,7 @@ function FormularioNativo({ alEnviar }) {
         { objectTypeId: '0-1', name: 'nombre_completo', value: campos.nombres },
         { objectTypeId: '0-1', name: 'email',     value: campos.correo },
         { objectTypeId: '0-1', name: 'phone',     value: campos.telefono },
-        { objectTypeId: '0-1', name: 'localidad', value: campos.barrio }, // Ajustar según campo en HubSpot
+        { objectTypeId: '0-1', name: 'address', value: campos.direccion }, // Ajustar según campo en HubSpot
       ],
       context: {
         pageUri:  window.location.href,
@@ -142,23 +142,19 @@ function FormularioNativo({ alEnviar }) {
         />
       </div>
       <div className="campo-grupo">
-        <label className="campo-etiqueta" htmlFor="barrio">¿En qué barrio vives?</label>
-        <select
-          id="barrio"
-          name="barrio"
-          className="campo-input campo-select"
-          value={campos.barrio}
-          onChange={manejarCambio}
-        >
-          <option value="">Selecciona tu barrio</option>
-          <option value="Kennedy">Kennedy</option>
-          <option value="Bosa">Bosa</option>
-          <option value="Suba">Suba</option>
-          <option value="Engativá">Engativá</option>
-          <option value="Usme">Usme</option>
-          <option value="Fontibón">Fontibón</option>
-        </select>
-      </div>
+            <label className="campo-etiqueta" htmlFor="direccion">
+              Dirección de residencia
+            </label>
+            <input
+              id="direccion"
+              name="direccion"
+              type="text"
+              className="campo-input"
+              placeholder="Ej: Cra 45 # 12-30, Kennedy"
+              value={campos.direccion}
+              onChange={manejarCambio}
+            />
+          </div>
       {error && (
         <p style={{ color: 'var(--color-rojo)', fontSize: '0.85rem', marginBottom: '1rem' }}>
           <i className="bi bi-exclamation-circle-fill"></i> {error}
