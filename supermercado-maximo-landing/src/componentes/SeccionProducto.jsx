@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import '../estilos/SeccionProducto.css'
+import EncuestaPostRegistro from './EncuestaPostRegistro'
+import { csIdentificarUsuario, csConversion } from '../utilidades/contentsquare'
 
 // ── Configuración HubSpot ──────────────────────────────────────────────
 const HUBSPOT_PORTAL_ID = import.meta.env.VITE_HUBSPOT_PORTAL_ID
@@ -86,6 +88,11 @@ function FormularioNativo({ alEnviar }) {
           direccion: campos.direccion || 'no_indicado',
           metodo: 'formulario_nativo' 
         })
+
+        csIdentificarUsuario({ correo: campos.correo })
+      csConversion()
+
+      
         alEnviar()
       } else {
         setError('Ocurrió un error. Por favor intenta de nuevo.')
@@ -185,6 +192,7 @@ function MensajeExito() {
 
 export default function SeccionProducto() {
   const [enviado, setEnviado] = useState(false)
+  const [mostrarEncuesta, setMostrarEncuesta] = useState(false)
 
   return (
     <section id="producto" className="seccion-producto">
@@ -217,13 +225,25 @@ export default function SeccionProducto() {
                   <h3>Crea tu cuenta ahora</h3>
                 </div>
                 <div className="tarjeta-registro-body">
-                  {enviado ? <MensajeExito /> : <FormularioNativo alEnviar={() => setEnviado(true)} />}
+                  {enviado ? (
+                    <MensajeExito />
+                  ) : (
+                    <FormularioNativo
+                      alEnviar={() => {
+                        setEnviado(true)
+                        setMostrarEncuesta(true)
+                      }}
+                    />
+                  )}
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+      {mostrarEncuesta && (
+        <EncuestaPostRegistro alCerrar={() => setMostrarEncuesta(false)} />
+      )}
     </section>
   )
 }

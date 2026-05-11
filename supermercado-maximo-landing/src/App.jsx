@@ -8,6 +8,7 @@ import CtaSecundario from './componentes/CtaSecundario.jsx'
 import SeccionPreguntasFrecuentes from './componentes/SeccionPreguntasFrecuentes.jsx'
 import PrePie from './componentes/PrePie.jsx'
 import PiePagina from './componentes/PiePagina.jsx'
+import BotonFeedback from './componentes/BotonFeedback'
 
 export default function App() {
   return (
@@ -24,6 +25,7 @@ export default function App() {
         <PrePie />
       </main>
       <PiePagina />
+      <BotonFeedback />
     </>
   )
 }
