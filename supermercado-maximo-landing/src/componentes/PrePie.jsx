@@ -10,46 +10,34 @@ const estadisticasFinales = [
 
 export default function PrePie() {
   const [email, setEmail] = useState('')
-  const [status, setStatus] = useState('') // '' | 'loading' | 'success' | 'error'
+  const [status, setStatus] = useState('')
 
   const handleSuscribir = async () => {
-    // Validación básica de email
-    if (!email || !email.includes('@')) {
-      alert("Por favor, ingresa un correo válido");
-      return
-    }
-
+    if (!email) return
     setStatus('loading')
-
     try {
       const res = await fetch('https://api.mailersend.com/v1/email', {
         method: 'POST',
         headers: {
-          // CORRECCIÓN: Se agregaron los backticks ``
-          'Authorization': `Bearer ${import.meta.env.VITE_MAILERSEND_KEY}`,
-          'Content-Type': 'application/json',
-          'X-Requested-With': 'XMLHttpRequest', 
+          'Authorization': 'Bearer mlsn.bad747fbaaa140e3573a30f0773d9f93ccc9de74d3c3a0f63c7680318aed4de7',
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify({
           from: {
-            email: import.meta.env.VITE_FROM_EMAIL,
+            email: 'noreply@test-zxk54v85qm6ljy6v.mlsender.net',
             name: 'Supermercado Máximo'
           },
-          to: [{ email: email }], // CORRECCIÓN: mejor ser explícito
-          template_id: import.meta.env.VITE_MAILERSEND_TEMPLATE
+          to: [{ email }],
+          template_id: '3zxk54v0edpgjy6v'
         })
       })
-
       if (res.ok) {
         setStatus('success')
         setEmail('')
       } else {
-        const errorData = await res.json();
-        console.error("Error API:", errorData);
         setStatus('error')
       }
-    } catch (error) {
-      console.error("Error de red:", error);
+    } catch {
       setStatus('error')
     }
   }
@@ -68,6 +56,7 @@ export default function PrePie() {
             en Bogotá eligen Supermercado Máximo como su mercado de confianza.
           </p>
 
+          {/* Formulario de suscripción */}
           <div className="pre-pie-form">
             <input
               type="email"
@@ -93,6 +82,7 @@ export default function PrePie() {
             <p className="pre-pie-msg-error">❌ Algo salió mal, intenta de nuevo.</p>
           )}
 
+          {/* Stats finales */}
           <div className="pre-pie-stats">
             {estadisticasFinales.map(s => (
               <div key={s.etiqueta} className="pre-pie-stat">
