@@ -16,20 +16,10 @@ export default function PrePie() {
     if (!email) return
     setStatus('loading')
     try {
-      const res = await fetch('https://api.mailersend.com/v1/email', {
+      const res = await fetch('/api/subscribe', {
         method: 'POST',
-        headers: {
-          'Authorization': 'Bearer mlsn.bad747fbaaa140e3573a30f0773d9f93ccc9de74d3c3a0f63c7680318aed4de7',
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          from: {
-            email: 'noreply@test-zxk54v85qm6ljy6v.mlsender.net',
-            name: 'Supermercado Máximo'
-          },
-          to: [{ email }],
-          template_id: '3zxk54v0edpgjy6v'
-        })
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email })
       })
       if (res.ok) {
         setStatus('success')
@@ -56,7 +46,6 @@ export default function PrePie() {
             en Bogotá eligen Supermercado Máximo como su mercado de confianza.
           </p>
 
-          {/* Formulario de suscripción */}
           <div className="pre-pie-form">
             <input
               type="email"
@@ -82,7 +71,6 @@ export default function PrePie() {
             <p className="pre-pie-msg-error">❌ Algo salió mal, intenta de nuevo.</p>
           )}
 
-          {/* Stats finales */}
           <div className="pre-pie-stats">
             {estadisticasFinales.map(s => (
               <div key={s.etiqueta} className="pre-pie-stat">

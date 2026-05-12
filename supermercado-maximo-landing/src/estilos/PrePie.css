@@ -108,3 +108,33 @@
   .pre-pie-stat { padding: 0.8rem 1.5rem; }
   .pre-pie-stat:not(:last-child)::after { display: none; }
 }
+.pre-pie-form {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+  flex-wrap: wrap;
+}
+
+.pre-pie-input {
+  padding: 12px 20px;
+  border-radius: 50px;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  width: 280px;
+  color: #333;
+}
+
+.pre-pie-msg-ok {
+  color: #90EE90;
+  font-weight: bold;
+  margin-top: 8px;
+}
+
+.pre-pie-msg-error {
+  color: #ff6b6b;
+  font-weight: bold;
+  margin-top: 8px;
+}
