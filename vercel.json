@@ -2,6 +2,10 @@
   "version": 2,
   "builds": [
     {
+      "src": "supermercado-maximo-landing/api/subscribe.js",
+      "use": "@vercel/node"
+    },
+    {
       "src": "supermercado-maximo-landing/package.json",
       "use": "@vercel/static-build",
       "config": {
@@ -10,6 +14,10 @@
     }
   ],
   "routes": [
+    {
+      "src": "/api/subscribe",
+      "dest": "supermercado-maximo-landing/api/subscribe.js"
+    },
     {
       "src": "/(.*)",
       "dest": "/index.html"
