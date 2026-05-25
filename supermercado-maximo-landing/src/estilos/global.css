@@ -2,6 +2,12 @@
    ESTILOS GLOBALES — Supermercado Máximo
    ============================================ */
 
+   /* Prevenir bloqueo de Bootstrap Icons font */
+    @font-face {
+      font-family: 'bootstrap-icons';
+      font-display: swap;
+    }
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -40,7 +46,7 @@ p {
 
 /* ── Animaciones ── */
 @keyframes subirFadeIn {
-  from { opacity: 0; transform: translateY(40px); }
+  from { opacity: 0; transform: translateY(20px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
@@ -76,7 +82,9 @@ p {
 }
 
 /* ── Clases utilitarias de animación ── */
-.animar-subir   { animation: subirFadeIn 0.7s ease both; }
+.animar-subir   {   
+  will-change: transform, opacity;
+  animation: subirFadeIn 0.7s ease both; }
 .animar-izq     { animation: entrarIzquierda 0.7s ease both; }
 .animar-der     { animation: entrarDerecha 0.7s ease both; }
 .flotar         { animation: flotar 3s ease-in-out infinite; }

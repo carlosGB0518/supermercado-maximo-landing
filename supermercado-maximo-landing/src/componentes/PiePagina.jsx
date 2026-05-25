@@ -70,7 +70,7 @@ export default function PiePagina() {
 
           {/* Columna 2 — Empresa */}
           <div className="col-lg-2 col-md-6 col-6">
-            <h4 className="pie-columna-titulo">Empresa</h4>
+            <h3 className="pie-columna-titulo">Empresa</h3>
             <ul className="pie-lista">
               {enlacesEmpresa.map(e => (
                 <li key={e.etiqueta}>
@@ -82,7 +82,7 @@ export default function PiePagina() {
 
           {/* Columna 3 — Ayuda */}
           <div className="col-lg-2 col-md-6 col-6">
-            <h4 className="pie-columna-titulo">Ayuda</h4>
+            <h3 className="pie-columna-titulo">Ayuda</h3>
             <ul className="pie-lista">
               {enlacesAyuda.map(e => (
                 <li key={e.etiqueta}>
@@ -94,7 +94,7 @@ export default function PiePagina() {
 
           {/* Columna 4 — Contacto */}
           <div className="col-lg-4 col-md-6">
-            <h4 className="pie-columna-titulo">Contáctanos</h4>
+            <h3 className="pie-columna-titulo">Contáctanos</h3>
 
             <div className="pie-contacto-item">
               <i className="bi bi-whatsapp"></i>

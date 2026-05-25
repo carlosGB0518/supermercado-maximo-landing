@@ -244,3 +244,22 @@
   .hero-tarjeta-flotante { padding: 2rem 1.5rem; }
   .hero-circulo-fondo { width: 300px; height: 300px; }
 }
+/* Reservar espacio fijo para prevenir CLS */
+.hero-badge {
+  min-height: 36px;
+  contain: layout style;
+}
+
+.hero-titulo {
+  min-height: 1.1em;
+  contain: layout;
+}
+
+.hero-botones {
+  min-height: 56px;
+  contain: layout;
+}
+
+.hero-stats {
+  min-height: 60px;
+}

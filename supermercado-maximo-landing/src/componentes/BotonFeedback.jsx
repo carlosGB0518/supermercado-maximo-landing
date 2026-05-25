@@ -67,7 +67,10 @@ export default function BotonFeedback() {
       </div>
 
       {/* Panel */}
-      <div className={`feedback-panel ${panelAbierto ? 'abierto' : ''}`} role="dialog" aria-modal="true">
+      <div   className={`feedback-panel ${panelAbierto ? 'abierto' : ''}`}
+            role="dialog"
+            aria-modal="true"
+            aria-label="Panel de feedback">
         <div className="feedback-panel-header">
           <button className="feedback-cerrar" onClick={cerrarPanel} aria-label="Cerrar">
             <i className="bi bi-x-lg"></i>

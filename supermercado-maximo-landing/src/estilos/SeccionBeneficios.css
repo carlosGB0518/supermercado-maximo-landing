@@ -140,8 +140,7 @@
   gap: 0.5rem;
   font-weight: 700;
   font-size: 0.95rem;
-  color: var(--color-gris-oscuro);
-  opacity: 0.6;
+  color: #767676;
   transition: var(--transicion);
 }
 

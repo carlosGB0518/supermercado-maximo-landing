@@ -1,14 +1,17 @@
+// src/App.jsx
+import { lazy, Suspense } from 'react'
 import Encabezado from './componentes/Encabezado.jsx'
 import SeccionHero from './componentes/SeccionHero.jsx'
-import SeccionBeneficios from './componentes/SeccionBeneficios.jsx'
-import CtaIntermedio from './componentes/CtaIntermedio.jsx'
-import SeccionProducto from './componentes/SeccionProducto.jsx'
-import SeccionTestimonios from './componentes/SeccionTestimonios.jsx'
-import CtaSecundario from './componentes/CtaSecundario.jsx'
-import SeccionPreguntasFrecuentes from './componentes/SeccionPreguntasFrecuentes.jsx'
-import PrePie from './componentes/PrePie.jsx'
-import PiePagina from './componentes/PiePagina.jsx'
-import BotonFeedback from './componentes/BotonFeedback'
+import BotonFeedback from './componentes/BotonFeedback.jsx'
+
+const SeccionBeneficios          = lazy(() => import('./componentes/SeccionBeneficios.jsx'))
+const CtaIntermedio              = lazy(() => import('./componentes/CtaIntermedio.jsx'))
+const SeccionProducto            = lazy(() => import('./componentes/SeccionProducto.jsx'))
+const SeccionTestimonios         = lazy(() => import('./componentes/SeccionTestimonios.jsx'))
+const CtaSecundario              = lazy(() => import('./componentes/CtaSecundario.jsx'))
+const SeccionPreguntasFrecuentes = lazy(() => import('./componentes/SeccionPreguntasFrecuentes.jsx'))
+const PrePie                     = lazy(() => import('./componentes/PrePie.jsx'))
+const PiePagina                  = lazy(() => import('./componentes/PiePagina.jsx'))
 
 export default function App() {
   return (
@@ -16,15 +19,19 @@ export default function App() {
       <Encabezado />
       <main>
         <SeccionHero />
-        <SeccionBeneficios />
-        <CtaIntermedio />
-        <SeccionProducto />
-        <SeccionTestimonios />
-        <CtaSecundario />
-        <SeccionPreguntasFrecuentes />
-        <PrePie />
+        <Suspense fallback={null}>
+          <SeccionBeneficios />
+          <CtaIntermedio />
+          <SeccionProducto />
+          <SeccionTestimonios />
+          <CtaSecundario />
+          <SeccionPreguntasFrecuentes />
+          <PrePie />
+        </Suspense>
       </main>
-      <PiePagina />
+      <Suspense fallback={null}>
+        <PiePagina />
+      </Suspense>
       <BotonFeedback />
     </>
   )
