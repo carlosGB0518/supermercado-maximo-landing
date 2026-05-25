@@ -18,10 +18,10 @@ export default function SeccionHero() {
       <div className="container">
         <div className="row align-items-center hero-contenido">
           <div className="col-lg-6">
-            <div className="hero-badge animar-subir delay-1">
+            <div className="hero-badge">
               <i className="bi bi-stars"></i> Nuevo · Ya disponible en tu barrio
             </div>
-            <h1 className="hero-titulo animar-subir delay-2">
+            <h1 className="hero-titulo">
               El mercado de tu barrio,{' '}
               <span className="acento">ahora más fácil</span> que nunca
             </h1>

@@ -145,7 +145,6 @@
 }
 
 .confianza-item:hover {
-  opacity: 1;
   color: var(--color-verde);
 }
 

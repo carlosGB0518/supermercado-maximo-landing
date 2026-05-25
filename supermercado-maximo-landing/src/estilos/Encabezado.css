@@ -112,6 +112,8 @@
   font-size: 1.5rem;
   cursor: pointer;
   padding: 0.4rem;
+  contain: layout style;
+  will-change: auto;
 }
 
 /* ── Mobile menu ── */

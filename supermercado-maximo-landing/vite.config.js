@@ -5,10 +5,11 @@ export default defineConfig({
   plugins: [react()],
   build: {
     cssCodeSplit: true,
+    cssMinify: true,       // ← agregar
     rollupOptions: {
       output: {
         manualChunks: {
-          'vendor-react':    ['react', 'react-dom'],
+          'vendor-react':     ['react', 'react-dom'],
           'vendor-bootstrap': ['bootstrap'],
         },
       },
@@ -18,7 +19,6 @@ export default defineConfig({
       compress: {
         drop_console:  true,
         drop_debugger: true,
-        pure_funcs: ['console.log', 'console.debug', 'console.info'],
       },
     },
   },
